@@ -11,6 +11,19 @@
 |
 */
 
-$app->get('/', function () use ($app) {
-    return $app->version();
+$app->post('/auth/login', 'Auth\AuthController@login');
+$app->post('/auth/register', 'Auth\AuthController@register');
+$app->get('/auth/verify', 'Auth\AuthController@verify');
+
+$app->group(['middleware' => 'jwt.auth'], function ($app) {
+
+    $app->get('/auth/me', function () use ($app) {
+        return [
+            'success' => [
+                'user' => JWTAuth::parseToken()->authenticate(),
+            ],
+        ];
+    });
+
+    $app->get('/auth/logout', 'App\Http\Controllers\Auth\AuthController@logout');
 });

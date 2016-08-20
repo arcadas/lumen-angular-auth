@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Registration and Authentication Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body ng-controller="Main as main" class="container">
+
+<div>
+    <h1>Registration and Authentication Demo</h1>
+    <br />
+</div>
+
+<form ng-hide="main.isAuthed()">
+    <div class="form-group">
+        <input class="form-control" type="text" ng-model="main.email" placeholder="e-mail">
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="password" ng-model="main.password" placeholder="password">
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Only for registration:</label>
+    <div class="form-group">
+    </div>
+        <input class="form-control" type="password" ng-model="main.password_confirmation" placeholder="password confirmation">
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="text" ng-model="main.name" placeholder="name">
+    </div>
+    <br>
+    <button class="btn btn-default" ng-click="main.register()">Register</button>
+    <button class="btn btn-default" ng-click="main.login()">Login</button>
+</form>
+
+<div ng-show="main.isAuthed()">
+    <h4 class="text-primary">Hello {{ main.getUserName() }}!</h4>
+    <br />
+    <br />
+    <button class="btn btn-default" ng-click="main.logout()" ng-show="main.isAuthed()">Logout</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+<script src="app.js"></script>
+<script src="auth/user.service.js"></script>
+<script src="auth/auth.service.js"></script>
+<script src="auth/auth.interceptor.js"></script>
+<script src="main/main.controller.js"></script>
+
+</body>
+</html>

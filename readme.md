@@ -8,10 +8,11 @@ API
 * Token based authentication (login)
 * Logout
 
-SPA (TODO)
+SPA
 
 * Registration and authentication views
 * Greeting page for authenticated users
+* Verification page (TODO)
 
 ### Documentation
 
@@ -24,10 +25,6 @@ SPA (TODO)
 * Rename .env.example file to .env!
 * Set up the MySQL and SMTP config in .env file!
 * Generate JWT_SECRET and APP_KEY!
-
-### TODO
-
-Angular.js SPA
 
 ### License
 
